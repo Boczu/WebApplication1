@@ -1,0 +1,17 @@
+@model Transaction
+
+@{
+    ViewData["Title"] = "Create Transaction";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@using (Html.BeginForm("Transaction", "Transaction", FormMethod.Post))
+{
+    <div>
+        <label for="id">id:</label>
+        <input type="text" Id="id" required />
+    </div>
+
+    <input type="submit" value="Create" />
+}

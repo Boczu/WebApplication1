@@ -1,0 +1,15 @@
+@model Transaction
+
+@{
+    ViewData["Title"] = "Delete Transaction";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <p>Czy na pewno chcesz usunąć transakcje <strong>@Model.Id</strong> (ID: @Model.Id)?</p>
+    <form method="post" asp-action="DeleteConfirmed" asp-route-id="@Model.Id">
+        <button type="submit" class="btn btn-danger">Usuń</button>
+        <a asp-action="Transactions" class="btn btn-secondary">Anuluj</a>
+    </form>
+</div>

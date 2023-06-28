@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Products";
+    var products = ViewData["Products"] as List<Product>;
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid blue;
+        padding: 8px;
+    }
+
+    th {
+        background-color: yellow;
+    }
+    
+    .action-button:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-area="" asp-controller="Product" asp-action="CreateProduct" class="btn btn-secondary">Dodaj nowego</a>
+<br/><br/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nazwa produktu</th>
+        <th colspan="2">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in products)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td class="action-button">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Products">Edytuj</a>
+            </td>
+            <td class="action-button">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Name">Usuń</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

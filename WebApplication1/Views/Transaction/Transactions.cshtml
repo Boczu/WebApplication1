@@ -1,0 +1,52 @@
+@using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+@{
+    ViewData["Title"] = "Transactions";
+    var products = ViewData["Transactions"] as List<Transaction>;
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid white;
+        padding: 8px;
+    }
+
+    th {
+        background-color: forestgreen;
+    }
+    
+    .action-button:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+<a asp-area="" asp-controller="Transaction" asp-action="CreateTransaction" class="btn btn-secondary">Dodaj nową</a>
+<br/><br/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nazwa transakcji</th>
+        <th colspan="2">Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in transaction)
+        {
+        <tr>
+            <td>@transaction.Id</td>
+            <td class="action-button">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Transaction" asp-action="Transactions">Edytuj</a>
+            </td>
+            <td class="action-button">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Transaction" asp-action="Delete" asp-route-id="@transaction.Name">Usuń</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
